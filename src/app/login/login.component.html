@@ -1,0 +1,26 @@
+<mat-card class="example-container">
+  <div class="col-md-12">
+      <mat-form-field class="width100">
+          <input [formControl]="loginEmailPhone" [(ngModel)]="loginMail" matInput placeholder="Email/Phone">
+          <mat-error *ngIf="loginEmailPhone.invalid || loginmailError">{{getErrorMobile()}}</mat-error> 
+        </mat-form-field>
+  </div>
+  <div class="col-md-12">
+      <mat-error *ngIf="loginmailError">{{getErrorMobile()}}</mat-error> 
+  </div>
+
+  <div class="col-md-12">
+      <mat-form-field class="width100">
+          <input  [formControl]="loginPassword" [(ngModel)]="loginPass" matInput type="password" placeholder="Password">
+          <mat-error *ngIf="loginPassword.invalid || loginPassError">{{getErrorpassword()}}</mat-error>
+        </mat-form-field>
+  </div>
+  <div class="col-md-12">
+      <mat-error *ngIf="loginPassError">{{getErrorpassword()}}</mat-error> 
+  </div>
+
+
+ <div class="col-md-12 text-center">
+    <button mat-raised-button color="primary" (click)="loginHandler()">Login</button>
+ </div>  
+</mat-card>
