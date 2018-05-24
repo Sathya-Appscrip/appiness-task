@@ -1,2 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body{
+ background-color: #f9f9f9;     
+}
+
+.example-container {
+    width: 36%;
+    margin: 10% 32%;
+    float: left;
+  }
+  
+  .width100 {
+    width: 100%;
+  }
+  
+  .mat-card-header-text{
+   width: 100% !important;
+  }
+  
+  h3{
+      margin: 0px 0px 10px;
+  }
+  
+  .padding-0{
+    padding: 0px;
+  }

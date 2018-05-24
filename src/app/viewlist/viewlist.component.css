@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+  }
+
+.mat-header-cell{
+    font-size: 100%;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #222;
+    padding: 10px;
+}  
+
+.mat-cell{
+    padding: 10px;
+    font-size: 95%;
+    color: #444;
+}
+
+.mTop5{
+    margin-top: 5%;
+}

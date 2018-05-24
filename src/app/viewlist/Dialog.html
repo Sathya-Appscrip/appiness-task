@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Edit Meeting</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.name" placeholder="Agenda">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Duration" [(value)]="data.selected" [(ngModel)]="data.duration">
+            <mat-option value="{{data.selected}}">{{data.selected}}</mat-option>
+            <mat-option value="5 minutes">5 minutes</mat-option>
+            <mat-option value="20 minutes">20 minutes </mat-option>
+            <mat-option value="30 minutes">20 minutes </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.assignee" placeholder="Assignee">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel Edit</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Apply Changes</button>
+</div>

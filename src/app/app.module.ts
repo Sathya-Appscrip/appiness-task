@@ -1,26 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule, MatSelectModule, MatInputModule, MatButtonModule, MatCardModule,MatDialogModule , MatToolbarModule , MatSnackBarModule } from '@angular/material';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';  
+
+import {InMemoryDataService} from './app.memory';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AppRoutingModule} from './app.routing';
-import { MatButtonToggleModule, MatCardModule, MatChipsModule, MatDatepickerModule, MatDialogModule,
-  MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
-  MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule,
-  MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule,
-  MatToolbarModule, MatTooltipModule, MatStepperModule , MatButtonModule ,MatCheckboxModule,
-} from '@angular/material';
-
+import { AppRoutingModule } from './app.routing';
+import { apiManagerService } from './api.manager.service';
+import { ViewlistComponent } from './viewlist/viewlist.component';
+import { DialogOverviewExampleDialog } from './viewlist/viewlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ViewlistComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -28,39 +30,19 @@ import { MatButtonToggleModule, MatCardModule, MatChipsModule, MatDatepickerModu
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule,
+    HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
-    MatStepperModule,
-    MatButtonModule, MatCheckboxModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
+    MatIconModule,MatSelectModule,
+    MatInputModule,MatToolbarModule,MatSnackBarModule,MatDialogModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
-  providers: [],
+  providers: [apiManagerService ],
+  entryComponents: [DialogOverviewExampleDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

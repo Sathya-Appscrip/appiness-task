@@ -1,0 +1,43 @@
+<div class="col-md-12 mTop5">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div class="col-md-8">
+          <span>Meeting Lists</span>
+      </div>
+     
+      <div class="col-md-4 text-right">
+          <button mat-raised-button title="Cancel Meeting" color="primary" (click)="logout()">
+              Logout
+          </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <table class="mat-table mat-elevation-z8">
+    <thead>
+      <tr class="mat-header-row">
+        <th class="mat-header-cell"> Meeting Agenda </th>
+        <th class="mat-header-cell"> Duration </th>
+        <th class="mat-header-cell"> Assignee </th>
+        <th class="mat-header-cell"> Edit </th>
+        <th class="mat-header-cell"> Delete </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="mat-row" *ngFor="let element of dataSource">
+        <td class="mat-cell"> {{element.name}} </td>
+        <td class="mat-cell"> {{element.duration}} </td>
+        <td class="mat-cell"> {{element.assignee}} </td>
+        <td class="mat-cell small-button">
+          <button mat-raised-button title="Edit Meeting" color="primary" (click)="editMeeting(element)">
+            <i class="material-icons">edit</i>
+          </button>
+        </td>
+        <td class="mat-cell small-button">
+            <button mat-raised-button title="Cancel Meeting" color="primary" (click)="quitMeeting(element)">
+                <i class="material-icons">delete_sweep</i>
+              </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
