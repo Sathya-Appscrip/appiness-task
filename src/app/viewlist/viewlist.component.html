@@ -1,43 +1,118 @@
-<div class="col-md-12 mTop5">
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <div class="col-md-8">
-          <span>Meeting Lists</span>
+<div class="row">
+  <div class="col-md-12" style="padding:0px">
+
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <div class="col-md-8" style="padding:0px">
+          <span>Data Lists</span> 
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="row">
+      <div class="col-md-3">
+
+        <mat-accordion>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              Panel 1
+            </mat-expansion-panel-header>
+
+            <div class="subAccordians">
+              <mat-accordion>
+
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    Draggble Contents
+                  </mat-expansion-panel-header>
+                  <div dndEffectAllowed="copyMove" class="dndList">
+                    <li *ngFor="let item of draggableListLeft" [dndDraggable]="item" [dndDisableIf]="item.disable" (dndStart)="onDragStart($event)"
+                      (dndCopied)="onDragged(item, draggableListLeft, 'copy')" (dndLinked)="onDragged(item, draggableListLeft, 'link')"
+                      (dndMoved)="onDragged(item, draggableListLeft, 'move')" (dndCanceled)="onDragged(item, draggableListLeft, 'none')"
+                      (dndEnd)="onDragEnd($event)">
+                      <span>{{item.content}}</span>
+                    </li>
+                  </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    Subtitle 2
+                  </mat-expansion-panel-header>
+                  This the expansion 2 content
+                </mat-expansion-panel>
+
+              </mat-accordion>
+            </div>
+
+
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              Panel 2
+            </mat-expansion-panel-header>
+
+            <div class="subAccordians">
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    Subtitle 1
+                  </mat-expansion-panel-header>
+                  This the expansion 2 content
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    Subtitle 2
+                  </mat-expansion-panel-header>
+
+                  This the expansion 2 content
+
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    Subtitle 3
+                  </mat-expansion-panel-header>
+
+                  This the expansion 2 content
+
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    Subtitle 4
+                  </mat-expansion-panel-header>
+
+                  This the expansion 2 content
+
+                </mat-expansion-panel>
+
+              </mat-accordion>
+            </div>
+
+
+          </mat-expansion-panel>
+
+
+        </mat-accordion>
       </div>
-     
-      <div class="col-md-4 text-right">
-          <button mat-raised-button title="Cancel Meeting" color="primary" (click)="logout()">
-              Logout
-          </button>
+      <div style="height:100vh;background:#fff" dndDropzone class="col-md-9" (dndDrop)="onDrop($event, draggableListRight)">
+
+        <mat-list dndEffectAllowed="copyMove" class="dndList">
+
+          <mat-list-item dndPlaceholderRef class="dndPlaceholder">
+          </mat-list-item>
+
+          <mat-list-item *ngFor="let item of draggableListRight">
+            <h1 mat-line>{{item.content}}</h1>
+            <p mat-line>Description: {{item.description}}</p>
+            <button mat-raised-button title="Edit Meeting" color="primary" (click)="editData(item)">
+              <i class="material-icons">edit</i>
+            </button>
+          </mat-list-item>
+
+        </mat-list>
       </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <table class="mat-table mat-elevation-z8">
-    <thead>
-      <tr class="mat-header-row">
-        <th class="mat-header-cell"> Meeting Agenda </th>
-        <th class="mat-header-cell"> Duration </th>
-        <th class="mat-header-cell"> Assignee </th>
-        <th class="mat-header-cell"> Edit </th>
-        <th class="mat-header-cell"> Delete </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="mat-row" *ngFor="let element of dataSource">
-        <td class="mat-cell"> {{element.name}} </td>
-        <td class="mat-cell"> {{element.duration}} </td>
-        <td class="mat-cell"> {{element.assignee}} </td>
-        <td class="mat-cell small-button">
-          <button mat-raised-button title="Edit Meeting" color="primary" (click)="editMeeting(element)">
-            <i class="material-icons">edit</i>
-          </button>
-        </td>
-        <td class="mat-cell small-button">
-            <button mat-raised-button title="Cancel Meeting" color="primary" (click)="quitMeeting(element)">
-                <i class="material-icons">delete_sweep</i>
-              </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+    </div>
+  </div>

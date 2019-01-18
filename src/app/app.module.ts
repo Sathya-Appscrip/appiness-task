@@ -4,23 +4,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule, MatSelectModule, MatInputModule, MatButtonModule, MatCardModule,MatDialogModule , MatToolbarModule , MatSnackBarModule } from '@angular/material';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';  
+import {
+  MatIconModule, MatSelectModule, MatInputModule, MatButtonModule,
+  MatExpansionModule, MatCardModule, MatDialogModule, MatToolbarModule, MatSnackBarModule,
+  MatSlideToggleModule,
+  MatListModule,
+  MatTabsModule
+} from '@angular/material';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import {InMemoryDataService} from './app.memory';
+import { InMemoryDataService } from './app.memory';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app.routing';
-import { apiManagerService } from './api.manager.service';
 import { ViewlistComponent } from './viewlist/viewlist.component';
 import { DialogOverviewExampleDialog } from './viewlist/viewlist.component';
+import { apiServiceManager } from './service';
+import { DndModule } from "ngx-drag-drop";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     ViewlistComponent,
     DialogOverviewExampleDialog
   ],
@@ -28,6 +33,7 @@ import { DialogOverviewExampleDialog } from './viewlist/viewlist.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    DndModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -35,13 +41,16 @@ import { DialogOverviewExampleDialog } from './viewlist/viewlist.component';
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
-    MatIconModule,MatSelectModule,
-    MatInputModule,MatToolbarModule,MatSnackBarModule,MatDialogModule,
+    MatIconModule, MatSelectModule,
+    MatSlideToggleModule,
+    MatListModule,
+    MatTabsModule,
+    MatInputModule, MatToolbarModule, MatSnackBarModule, MatDialogModule, MatExpansionModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [apiManagerService ],
+  providers: [apiServiceManager],
   entryComponents: [DialogOverviewExampleDialog],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,7 @@
 
     <div class="col-md-12">
         <mat-form-field class="width100">
-            <input [formControl]="loginEmailPhone" [(ngModel)]="loginMail" matInput placeholder="Email/Phone">
+            <input [formControl]="loginEmailPhone" [(ngModel)]="loginMail" matInput placeholder="Email">
             <mat-error *ngIf="loginEmailPhone.invalid || loginmailError">{{getErrorMobile()}}</mat-error>
         </mat-form-field>
     </div>
@@ -27,13 +27,7 @@
         </mat-form-field>
     </div>
 
-    <div class="col-md-6 text-center">
-        <mat-hint>Registered !</mat-hint>
+    <div class="col-md-12 text-center">
         <button mat-raised-button color="primary" (click)="loginHandler()" [disabled]="!(loginMail && loginPass)">Login</button>
-    </div>
-
-    <div class="col-md-6 text-center">
-        <mat-hint>Not a member ?</mat-hint>
-        <button mat-raised-button color="primary" routerLink="/registration">Register</button>
     </div>
 </mat-card>
